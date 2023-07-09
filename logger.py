@@ -11,7 +11,7 @@ def get_logger(name, filepath = None, overwrite_print=False):
     file_handler = logging.FileHandler(filepath,mode='w')
 
 
-    console_format = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    console_format = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     file_format = logging.Formatter('%(asctime)s - %(levelname)s - %(pathname)s -> %(funcName)s, line %(lineno)d - %(message)s')
 
 

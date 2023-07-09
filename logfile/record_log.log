@@ -1,9 +1,0 @@
-2023-07-07 16:15:52,243 - INFO - website_traker.py -> track_func, line 48 - ============== Initialize Website Tracker ===============
-2023-07-07 16:15:52,243 - INFO - website_traker.py -> track_func, line 49 - Website: 日本女性專屬外宿網站
-2023-07-07 16:15:52,243 - INFO - website_traker.py -> track_func, line 50 - Link: https://tokyosharehouse.com/jpn/house/room/2933/empty/
-2023-07-07 16:15:52,243 - INFO - website_traker.py -> track_func, line 51 - Emails: ['joey0201020123@gmail.com', 'penny881121@gmail.com']
-2023-07-07 16:15:52,243 - INFO - website_traker.py -> track_func, line 52 - Remind Message: 空屋房間已更新！
-2023-07-07 16:15:52,243 - INFO - website_traker.py -> track_func, line 53 - Update Frequency: 300 second
-2023-07-07 16:15:52,243 - DEBUG - website_traker.py -> track_func, line 54 - Init annotations: 
-※現在、空室のお部屋はありません。
-

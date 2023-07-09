@@ -1,12 +1,27 @@
 [
   {
-    "target_URLs":"https://tokyosharehouse.com/jpn/house/room/2933/empty/",
+    "target_URL":"https://tokyosharehouse.com/jpn/house/room/2933/empty/",
     "tag":"div",
     "class_name":"content-room",
-    "website_names":"日本女性專屬外宿網站",
+    "website_name":"日本女性專屬外宿網站",
     "email_messages":"空屋房間已更新！",
     "to_emails":["joey0201020123@gmail.com","penny881121@gmail.com"],
-    "encodings":false,
-    "update_second":300
+    "encoding":false,
+    "update_second":300,
+    "Tracker":"BasicTracker",
+    "mode":"BeautifulSoup"
+  },
+  {
+    "target_URL":"https://www.agoda.com/zh-tw/the-lin-hotel/hotel/taichung-tw.html?finalPriceView=1&isShowMobileAppPrice=false&cid=1844104&numberOfBedrooms=&familyMode=false&adults=2&children=0&rooms=1&maxRooms=0&checkIn=2023-09-4&isCalendarCallout=false&childAges=&numberOfGuest=0&missingChildAges=false&travellerType=1&showReviewSubmissionEntry=false&currencyCode=TWD&isFreeOccSearch=false&isCityHaveAsq=false&los=1&searchrequestid=6971bf86-71d4-471e-bb9e-ec9573c178ca",
+    "tag":"span",
+    "class_name":"StickyNavPrice__priceDetail",
+    "website_name":"Agoda 林酒店 9_4-5 兩人",
+    "email_messages":"價格已降低！",
+    "to_emails":["joey0201020123@gmail.com"],
+    "encoding":false,
+    "update_second":300,
+    "Tracker":"AgodaTracker",
+    "update_diff":100,
+    "mode":"selenium"
   }
 ]
