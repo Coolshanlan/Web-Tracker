@@ -1,0 +1,19 @@
+2023-07-10 16:23:08,821 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 57 - ============== Initialize Config ===============
+2023-07-10 16:23:08,821 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - target_URL: https://www.google.com/finance/quote/TWD-JPY?sa=X&ved=2ahUKEwiI__fnooOAAxV0hMYKHYPhBNQQmY0JegQIDRAc
+2023-07-10 16:23:08,821 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - tag: div
+2023-07-10 16:23:08,821 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - class_name: kf1m0
+2023-07-10 16:23:08,821 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - extract_all: False
+2023-07-10 16:23:08,821 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - website_name: 日幣匯率
+2023-07-10 16:23:08,821 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - email_messages: 匯率已降低！
+2023-07-10 16:23:08,821 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - to_emails: ['joey0201020123@gmail.com']
+2023-07-10 16:23:08,821 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - encoding: False
+2023-07-10 16:23:08,821 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - update_second: 300
+2023-07-10 16:23:08,821 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - mode: Basic
+2023-07-10 16:23:08,821 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - tracker: NumberTracker
+2023-07-10 16:23:08,821 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - target_number: {'mode': 'bigger', 'number': 4.6, 'remind_diff': 0.01}
+2023-07-10 16:23:09,185 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 61 - Init annotations: 4.5398
+2023-07-10 16:23:09,185 - INFO - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 63 - ============== Initialize Website Tracker ===============
+2023-07-10 16:23:09,185 - INFO - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 64 - Website: 日幣匯率
+2023-07-10 16:23:09,185 - INFO - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 65 - Link: https://www.google.com/finance/quote/TWD-JPY?sa=X&ved=2ahUKEwiI__fnooOAAxV0hMYKHYPhBNQQmY0JegQIDRAc
+2023-07-10 16:23:09,185 - INFO - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 66 - Emails: ['joey0201020123@gmail.com']
+2023-07-10 16:23:09,185 - INFO - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 68 - Update Frequency: 300 second

@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 from send_email import send_email
 import sys
 from logger import  get_logger
-from tracker import *
+from tracker import get_BasicTracker_by_name, get_DynamicTracker_by_name, BasicTracker
 
 
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
@@ -29,10 +29,19 @@ def argparser():
   args = parser.parse_args()
   return args.debug
 
+default_config = {
+    "extract_all":False,
+    "email_messages":"內容已更新！",
+    "encoding":False,
+    "update_second":300,
+    "mode":"Basic",
+    "tracker":"BasicTracker"
+    }
 
 DEBUG=argparser()
 with open('config.json','r') as f:
   track_website_infos=json.load(f)
+
   
 
 if DEBUG:
@@ -40,12 +49,16 @@ if DEBUG:
 
 trackers=[]
 for track_website_info in track_website_infos:
-  tracker = eval(track_website_info['Tracker'])
-  trackers.append(Runner(tracker(website_info=track_website_info,
-                                 debug = DEBUG)))
+  website_info = dict(default_config)
+  website_info.update(track_website_info)
+  func_name=f'get_{website_info["mode"]}Tracker_by_name("{website_info["tracker"]}")'
+  tracker = eval(func_name)
+  trackers.append(Runner(tracker(website_info=website_info,
+                                 debug = DEBUG,
+                                 config_path='config.json')))
   trackers[-1].start()
-  time.sleep(1)
-  
+  time.sleep(2)
 for track_website_info in track_website_infos:
-  trackers[-1].join()
+  for tracker in trackers:
+    tracker.join()
     

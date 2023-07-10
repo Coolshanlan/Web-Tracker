@@ -1,19 +1,20 @@
-2023-07-10 00:32:50,243 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 16 - ============== Config ==============
-2023-07-10 00:32:50,243 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 18 - target_URL: https://tokyosharehouse.com/jpn/house/room/2933/empty/
-2023-07-10 00:32:50,243 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 18 - tag: div
-2023-07-10 00:32:50,243 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 18 - class_name: content-room
-2023-07-10 00:32:50,243 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 18 - website_name: 日本女性專屬外宿網站
-2023-07-10 00:32:50,243 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 18 - email_messages: 空屋房間已更新！
-2023-07-10 00:32:50,243 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 18 - to_emails: ['joey0201020123@gmail.com', 'penny881121@gmail.com']
-2023-07-10 00:32:50,243 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 18 - encoding: False
-2023-07-10 00:32:50,243 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 18 - update_second: 300
-2023-07-10 00:32:50,243 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 18 - Tracker: BasicTracker
-2023-07-10 00:32:50,243 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 18 - mode: BeautifulSoup
-2023-07-10 00:32:50,243 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 19 - Init annotations: 
+2023-07-10 16:23:04,814 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 57 - ============== Initialize Config ===============
+2023-07-10 16:23:04,814 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - target_URL: https://tokyosharehouse.com/jpn/house/room/2933/empty/
+2023-07-10 16:23:04,814 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - tag: div
+2023-07-10 16:23:04,814 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - class_name: content-room
+2023-07-10 16:23:04,814 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - extract_all: False
+2023-07-10 16:23:04,814 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - website_name: 日本女性專屬外宿網站
+2023-07-10 16:23:04,814 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - email_messages: 空屋房間已更新！
+2023-07-10 16:23:04,814 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - to_emails: ['joey0201020123@gmail.com', 'penny881121@gmail.com']
+2023-07-10 16:23:04,814 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - encoding: False
+2023-07-10 16:23:04,814 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - update_second: 300
+2023-07-10 16:23:04,814 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - mode: Basic
+2023-07-10 16:23:04,814 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - tracker: BasicTracker
+2023-07-10 16:23:05,047 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 61 - Init annotations: 
 ※現在、空室のお部屋はありません。
 
-2023-07-10 00:32:50,243 - INFO - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 21 - ============== Initialize Website Tracker ===============
-2023-07-10 00:32:50,243 - INFO - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 22 - Website: 日本女性專屬外宿網站
-2023-07-10 00:32:50,243 - INFO - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 23 - Link: https://tokyosharehouse.com/jpn/house/room/2933/empty/
-2023-07-10 00:32:50,243 - INFO - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 24 - Emails: ['joey0201020123@gmail.com', 'penny881121@gmail.com']
-2023-07-10 00:32:50,243 - INFO - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 26 - Update Frequency: 300 second
+2023-07-10 16:23:05,047 - INFO - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 63 - ============== Initialize Website Tracker ===============
+2023-07-10 16:23:05,047 - INFO - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 64 - Website: 日本女性專屬外宿網站
+2023-07-10 16:23:05,047 - INFO - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 65 - Link: https://tokyosharehouse.com/jpn/house/room/2933/empty/
+2023-07-10 16:23:05,047 - INFO - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 66 - Emails: ['joey0201020123@gmail.com', 'penny881121@gmail.com']
+2023-07-10 16:23:05,047 - INFO - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 68 - Update Frequency: 300 second
