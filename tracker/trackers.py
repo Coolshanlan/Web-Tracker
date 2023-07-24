@@ -33,11 +33,11 @@ def get_NumberTracker(basic_tracker):
             # record history
             if self.last_annotation != new_annotations:
                 self.last_annotation = new_annotations
-                self.logger.debug(f'Annotation different record:{new_annotations}')
+                self.logger.debug(f'Annotation update record:{new_annotations}')
             
             # check if number achieve the target number    
-            if "target_number" in self.website_info.keys():
-                target_info=self.website_info["target_number"]
+            if "target_number" in self.tracker_info.keys():
+                target_info=self.tracker_info["target_number"]
                 
                 # keep tracking
                 if self.achieved and "remind_diff" in self.target_info.keys():
@@ -52,7 +52,31 @@ def get_NumberTracker(basic_tracker):
             
             # Only remind diff
 
-            return (new_annotations-self.annotations)*(1 if float(self.website_info['remind_diff'])>0 else -1) >= abs(float(self.website_info['remind_diff']))
+            return (new_annotations-self.annotations)*(1 if float(self.tracker_info['remind_diff'])>0 else -1) >= abs(float(self.tracker_info['remind_diff']))
         
         
     return NumberTracker
+
+
+def get_NewTracker(basic_tracker):
+    class NewTracker(basic_tracker):
+        def __init__(self, **kwargs):
+            super().__init__(**kwargs)
+            self.achieved =False
+            self.last_annotation=None
+        
+            
+        def checking(self,new_annotations):
+            if self.last_annotation is None:
+                self.last_annotation = new_annotations
+            
+            # record history
+            if self.last_annotation != new_annotations:
+                self.last_annotation = new_annotations
+                self.logger.debug(f'Annotation update record:\n{new_annotations}')
+            if len(set(new_annotations.split('\n'))-set(self.annotations.split('\n') ))>0:
+                return True
+        
+            return False
+        
+    return NewTracker

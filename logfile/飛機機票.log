@@ -1,0 +1,22 @@
+2023-07-24 13:25:00,194  WARNING  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> extract_annotation, line 121  Annotations find element return None
+2023-07-24 13:25:00,194  WARNING  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> extract_annotation, line 122  Tag and id or class_name: {'tag': 'span', 'class_name': 'BpkText_bpk-text__MWZkY BpkText_bpk-text--heading-4__MzBkN'}
+2023-07-24 13:25:00,194  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 68  【Initialize Config】
+2023-07-24 13:25:00,194  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 63  extract_all: False
+2023-07-24 13:25:00,194  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 63  encoding: False
+2023-07-24 13:25:00,194  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 63  update_second: 120
+2023-07-24 13:25:00,194  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 63  tracker: {'mode': 'Dynamic', 'dynamic_delay': 10, 'tracker_name': 'NumberTracker', 'target_number': {'mode': 'lower', 'number': 14200, 'remind_diff': -100}}
+2023-07-24 13:25:00,194  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 63  target_URL: https://www.skyscanner.com.tw/transport/flights/tpet/nrt/230830/240221/config/17075-2308300850--32331-0-14788-2308301315%7C14788-2402211300--32331-0-17075-2402211605?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=1
+2023-07-24 13:25:00,194  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 63  website_name: 飛機機票
+2023-07-24 13:25:00,194  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 63  enable: True
+2023-07-24 13:25:00,195  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 63  email_messages: 你家厲害寶貝幫你發現日本share house 網站有新的空屋囉！
+2023-07-24 13:25:00,195  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 63  to_emails: ['joey0201020123@gmail.com', 'penny881121@gmail.com']
+2023-07-24 13:25:00,195  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 63  remove_word: ['NT$']
+2023-07-24 13:25:00,195  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 63  find_element: {'tag': 'span', 'class_name': 'BpkText_bpk-text__MWZkY BpkText_bpk-text--heading-4__MzBkN'}
+2023-07-24 13:25:00,195  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 70  Init annotations:
+None
+2023-07-24 13:25:00,195  INFO  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 72  【Initialize Website Tracker】
+2023-07-24 13:25:00,195  INFO  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 73  Website: 飛機機票
+2023-07-24 13:25:00,195  INFO  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 74  Link: https://www.skyscanner.com.tw/transport/flights/tpet/nrt/230830/240221/config/17075-2308300850--32331-0-14788-2308301315%7C14788-2402211300--32331-0-17075-2402211605?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=1
+2023-07-24 13:25:00,195  INFO  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 75  Emails: ['joey0201020123@gmail.com', 'penny881121@gmail.com']
+2023-07-24 13:25:00,195  INFO  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 77  Update Frequency: 120 second
+2023-07-24 13:25:38,810  INFO  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> close, line 39  【Closing 【飛機機票】 tracker】

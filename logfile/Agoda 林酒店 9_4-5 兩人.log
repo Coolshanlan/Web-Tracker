@@ -1,34 +1,30 @@
-2023-07-10 16:23:06,817 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 57 - ============== Initialize Config ===============
-2023-07-10 16:23:06,817 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - target_URL: https://www.agoda.com/zh-tw/the-lin-hotel/hotel/taichung-tw.html?finalPriceView=1&isShowMobileAppPrice=false&cid=1844104&numberOfBedrooms=&familyMode=false&adults=2&children=0&rooms=1&maxRooms=0&checkIn=2023-09-4&isCalendarCallout=false&childAges=&numberOfGuest=0&missingChildAges=false&travellerType=1&showReviewSubmissionEntry=false&currencyCode=TWD&isFreeOccSearch=false&isCityHaveAsq=false&los=1&searchrequestid=6971bf86-71d4-471e-bb9e-ec9573c178ca
-2023-07-10 16:23:06,818 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - tag: span
-2023-07-10 16:23:06,818 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - class_name: StickyNavPrice__priceDetail
-2023-07-10 16:23:06,818 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - extract_all: False
-2023-07-10 16:23:06,818 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - website_name: Agoda 林酒店 9_4-5 兩人
-2023-07-10 16:23:06,818 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - email_messages: 價格已降低！
-2023-07-10 16:23:06,818 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - to_emails: ['joey0201020123@gmail.com']
-2023-07-10 16:23:06,818 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - encoding: False
-2023-07-10 16:23:06,818 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - update_second: 10
-2023-07-10 16:23:06,818 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - mode: Dynamic
-2023-07-10 16:23:06,818 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - tracker: NumberTracker
-2023-07-10 16:23:06,818 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - remove_word: [',', '自 NT$ ']
-2023-07-10 16:23:06,818 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - remind_diff: -100
-2023-07-10 16:23:18,669 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 61 - Init annotations: 4710.0
-2023-07-10 16:23:18,669 - INFO - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 63 - ============== Initialize Website Tracker ===============
-2023-07-10 16:23:18,669 - INFO - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 64 - Website: Agoda 林酒店 9_4-5 兩人
-2023-07-10 16:23:18,669 - INFO - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 65 - Link: https://www.agoda.com/zh-tw/the-lin-hotel/hotel/taichung-tw.html?finalPriceView=1&isShowMobileAppPrice=false&cid=1844104&numberOfBedrooms=&familyMode=false&adults=2&children=0&rooms=1&maxRooms=0&checkIn=2023-09-4&isCalendarCallout=false&childAges=&numberOfGuest=0&missingChildAges=false&travellerType=1&showReviewSubmissionEntry=false&currencyCode=TWD&isFreeOccSearch=false&isCityHaveAsq=false&los=1&searchrequestid=6971bf86-71d4-471e-bb9e-ec9573c178ca
-2023-07-10 16:23:18,670 - INFO - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 66 - Emails: ['joey0201020123@gmail.com']
-2023-07-10 16:23:18,670 - INFO - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 68 - Update Frequency: 10 second
-2023-07-10 16:23:40,896 - INFO - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> update_config, line 49 - ==============Config Updated ==============
-2023-07-10 16:23:40,896 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - target_URL: https://www.agoda.com/zh-tw/the-lin-hotel/hotel/taichung-tw.html?finalPriceView=1&isShowMobileAppPrice=false&cid=1844104&numberOfBedrooms=&familyMode=false&adults=2&children=0&rooms=1&maxRooms=0&checkIn=2023-09-4&isCalendarCallout=false&childAges=&numberOfGuest=0&missingChildAges=false&travellerType=1&showReviewSubmissionEntry=false&currencyCode=TWD&isFreeOccSearch=false&isCityHaveAsq=false&los=1&searchrequestid=6971bf86-71d4-471e-bb9e-ec9573c178ca
-2023-07-10 16:23:40,896 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - tag: span
-2023-07-10 16:23:40,896 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - class_name: StickyNavPrice__priceDetail
-2023-07-10 16:23:40,896 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - extract_all: False
-2023-07-10 16:23:40,896 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - website_name: Agoda 林酒店 9_4-5 兩人
-2023-07-10 16:23:40,896 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - email_messages: 價格已降低！
-2023-07-10 16:23:40,896 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - to_emails: ['joey0201020123@gmail.com']
-2023-07-10 16:23:40,896 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - encoding: False
-2023-07-10 16:23:40,896 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - update_second: 300
-2023-07-10 16:23:40,896 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - mode: Dynamic
-2023-07-10 16:23:40,896 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - tracker: NumberTracker
-2023-07-10 16:23:40,896 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - remove_word: [',', '自 NT$ ']
-2023-07-10 16:23:40,896 - DEBUG - /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 54 - remind_diff: -100
+2023-07-22 02:08:58,333  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 62  【Initialize Config】
+2023-07-22 02:08:58,333  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 57  extract_all: False
+2023-07-22 02:08:58,333  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 57  encoding: False
+2023-07-22 02:08:58,333  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 57  update_second: 600
+2023-07-22 02:08:58,333  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 57  mode: Dynamic
+2023-07-22 02:08:58,333  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 57  tracker: NumberTracker
+2023-07-22 02:08:58,333  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 57  email_messages: 價格已降低！
+2023-07-22 02:08:58,333  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 57  target_URL: https://www.agoda.com/zh-tw/the-lin-hotel/hotel/taichung-tw.html?finalPriceView=1&isShowMobileAppPrice=false&cid=1844104&numberOfBedrooms=&familyMode=false&adults=2&children=0&rooms=1&maxRooms=0&checkIn=2023-09-4&isCalendarCallout=false&childAges=&numberOfGuest=0&missingChildAges=false&travellerType=1&showReviewSubmissionEntry=false&currencyCode=TWD&isFreeOccSearch=false&isCityHaveAsq=false&los=1&searchrequestid=6971bf86-71d4-471e-bb9e-ec9573c178ca
+2023-07-22 02:08:58,333  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 57  website_name: Agoda 林酒店 9_4-5 兩人
+2023-07-22 02:08:58,333  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 57  enable: True
+2023-07-22 02:08:58,333  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 57  to_emails: ['joey0201020123@gmail.com']
+2023-07-22 02:08:58,333  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 57  find_element: {'tag': 'span', 'class_name': 'StickyNavPrice__priceDetail'}
+2023-07-22 02:08:58,333  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 57  remove_word: [',', '自 NT$ ']
+2023-07-22 02:08:58,333  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 57  remind_diff: -100
+2023-07-22 02:08:58,333  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 64  Init annotations: 4555.0
+2023-07-22 02:08:58,333  INFO  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 66  【Initialize Website Tracker】
+2023-07-22 02:08:58,333  INFO  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 67  Website: Agoda 林酒店 9_4-5 兩人
+2023-07-22 02:08:58,333  INFO  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 68  Link: https://www.agoda.com/zh-tw/the-lin-hotel/hotel/taichung-tw.html?finalPriceView=1&isShowMobileAppPrice=false&cid=1844104&numberOfBedrooms=&familyMode=false&adults=2&children=0&rooms=1&maxRooms=0&checkIn=2023-09-4&isCalendarCallout=false&childAges=&numberOfGuest=0&missingChildAges=false&travellerType=1&showReviewSubmissionEntry=false&currencyCode=TWD&isFreeOccSearch=false&isCityHaveAsq=false&los=1&searchrequestid=6971bf86-71d4-471e-bb9e-ec9573c178ca
+2023-07-22 02:08:58,333  INFO  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 69  Emails: ['joey0201020123@gmail.com']
+2023-07-22 02:08:58,333  INFO  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 71  Update Frequency: 600 second
+2023-07-22 06:24:26,766  DEBUG  /home/coolshan/Project/Tracker/tracker/trackers.py -> checking, line 36  Annotation different record:4556.0
+2023-07-22 08:37:13,984  DEBUG  /home/coolshan/Project/Tracker/tracker/trackers.py -> checking, line 36  Annotation different record:4553.0
+2023-07-22 08:47:26,024  DEBUG  /home/coolshan/Project/Tracker/tracker/trackers.py -> checking, line 36  Annotation different record:4556.0
+2023-07-22 12:11:33,710  DEBUG  /home/coolshan/Project/Tracker/tracker/trackers.py -> checking, line 36  Annotation different record:4550.0
+2023-07-23 06:23:57,585  DEBUG  /home/coolshan/Project/Tracker/tracker/trackers.py -> checking, line 36  Annotation different record:4551.0
+2023-07-23 08:36:39,567  DEBUG  /home/coolshan/Project/Tracker/tracker/trackers.py -> checking, line 36  Annotation different record:4550.0
+2023-07-23 12:31:23,832  DEBUG  /home/coolshan/Project/Tracker/tracker/trackers.py -> checking, line 36  Annotation different record:4546.0
+2023-07-24 06:23:10,311  DEBUG  /home/coolshan/Project/Tracker/tracker/trackers.py -> checking, line 36  Annotation different record:4544.0
+2023-07-24 08:46:13,020  DEBUG  /home/coolshan/Project/Tracker/tracker/trackers.py -> checking, line 36  Annotation different record:4543.0
+2023-07-24 08:56:25,040  DEBUG  /home/coolshan/Project/Tracker/tracker/trackers.py -> checking, line 36  Annotation different record:4547.0

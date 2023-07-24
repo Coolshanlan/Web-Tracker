@@ -9,28 +9,34 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
 import json
+import threading
+import sys
 
-class BasicTracker():
+class BasicTracker(threading.Thread):
   default_config={
-    "target_URL":"https://tokyosharehouse.com/jpn/house/room/2933/empty/",
-    "tag":"div",
-    "class_name":"content-room",
     "extract_all":False,
-    "website_name":"日本女性專屬外宿網站",
-    "email_messages":"空屋房間已更新！",
-    "to_emails":["joey0201020123@gmail.com"],
     "encoding":False,
     "update_second":300,
-    "mode":"Basic",
-    "tracker":"BasicTracker"
+    "tracker":{
+      "mode":"Basic",
+      "tracker_name":"BasicTracker",
+      "dynamic_delay":5
+      }
     }
   
   def __init__(self, website_info, config_path, debug=False):
+    super().__init__()
     self.website_info = self.load_config(website_info)
+    self.tracker_info = self.website_info['tracker']
     self.logger = get_logger(self.website_info['website_name'])
     self.debug = debug
     self.config_path = config_path
     self.destroy = False
+    self.name = self.website_info['website_name']
+    
+  def close(self): 
+    self.destroy=True
+    self.logger.info(f'【Closing 【{self.name}】 tracker】')
     
   def load_config(self, website_info):
     _website_info = dict(BasicTracker.default_config)
@@ -46,27 +52,29 @@ class BasicTracker():
         new_website_info = self.load_config(track_website_info)
         if self.website_info!=new_website_info:
           self.website_info = dict(new_website_info)
-          self.logger.info('==============Config Updated ==============')
+          self.logger.info('【Config Updated】')
           self.log_config()
+          print('')
         
   def log_config(self):
     for k,v in self.website_info.items():
       self.logger.debug(f'{k}: {v}')
     
   def init_tracker(self):
-    self.logger.debug('============== Initialize Config ===============')
-    self.log_config()
-    
     self.annotations = self.get_annotation()
-    self.logger.debug('Init annotations: '+ str(self.annotations))   
     
-    self.logger.info('============== Initialize Website Tracker ===============')
+    self.logger.debug('【Initialize Config】')
+    self.log_config()
+    self.logger.debug('Init annotations:\n'+ str(self.annotations))   
+    
+    self.logger.info('【Initialize Website Tracker】')
     self.logger.info('Website: '+self.website_info["website_name"])
     self.logger.info('Link: '+self.website_info["target_URL"])
     self.logger.info('Emails: '+str(self.website_info["to_emails"]))
     # self.logger.info('Remind Message: '+self.website_info["email_messages"])
     self.logger.info('Update Frequency: '+str(self.website_info["update_second"])+ ' second')
-  
+    print('')
+    
   def get_page_content(self):
     try:
       response = requests.get(self.website_info["target_URL"])
@@ -85,11 +93,33 @@ class BasicTracker():
 
   def extract_annotation(self, page_content):
       soup = BeautifulSoup(page_content, "html.parser")
+      find_element_info = self.website_info['find_element']
+      # extract all element
       if self.website_info['extract_all']:
-        annotations = [ i.text.replace('\xa0','').replace('\n','|').replace('||||','|').replace('|||','|').replace('||','|').replace('||','|').replace('||','|').replace('||','|').replace('||','|').replace('|','\n').replace('\r','').replace('\t','') for i in soup.find_all(self.website_info["tag"],class_=self.website_info["class_name"])]
+        if 'id' in find_element_info.keys():
+          # annotations = [ i.text.replace('\xa0','').replace('\n','|').replace('||||','|').replace('|||','|').replace('||','|').replace('||','|').replace('||','|').replace('||','|').replace('||','|').replace('|','\n').replace('\r','').replace('\t','') for i in soup.find_all(find_element_info["tag"],id=find_element_info["id"])]   
+          annotations = [ i.text.replace('\xa0','').replace('\n','|').replace('||||','|').replace('|||','|').replace('||','|').replace('||','|').replace('||','|').replace('||','|').replace('||','|').replace('|','\n').replace('\r','').replace('\t','') for i in soup.find_all(find_element_info["tag"],id=find_element_info["id"])]   
+        else:
+          annotations = [ i.text.replace('\xa0','').replace('\n','|').replace('||||','|').replace('|||','|').replace('||','|').replace('||','|').replace('||','|').replace('||','|').replace('||','|').replace('|','\n').replace('\r','').replace('\t','') for i in soup.find_all(find_element_info["tag"],class_=find_element_info["class_name"])]
+        
+        if annotations is None:
+          self.logger.warning(f'Annotations find element return None')
+          self.logger.warning(f'Tag and id or class_name: {self.website_info["find_element"]}')
+          print('')
+          return None
+    
         annotations = '\n'.join(annotations)
+      
       else:
-        annotations = soup.find(self.website_info["tag"],class_=self.website_info["class_name"])
+        if 'id' in find_element_info.keys():
+          annotations = soup.find(find_element_info["tag"],id=find_element_info["id"])
+        else:
+          annotations = soup.find(find_element_info["tag"],class_=find_element_info["class_name"])
+        if annotations is None:
+          self.logger.warning('Annotations find element return None')
+          self.logger.warning(f'Tag and id or class_name: {self.website_info["find_element"]}')
+          print('')
+          return None
         annotations = annotations.text.replace('\xa0','').replace('\n','|').replace('||||','|').replace('|||','|').replace('||','|').replace('||','|').replace('||','|').replace('||','|').replace('||','|').replace('|','\n').replace('\r','').replace('\t','')
       return annotations
     
@@ -108,12 +138,16 @@ class BasicTracker():
         return None
       
       new_annotations = self.extract_annotation(page_content)
+      
+      if new_annotations == None:
+        return None
+      
       if self.debug:
-        print(f'extract annotation: {new_annotations}')
+        print(f'extract annotation:\n{new_annotations}')
         
       new_annotations = self.post_process(new_annotations)
       if self.debug:
-        print(f'post process annotation: {new_annotations}')
+        print(f'post process annotation:\n{new_annotations}')
         
       return new_annotations
     
@@ -124,9 +158,11 @@ class BasicTracker():
     self.init_tracker()
     
     while(True):
-      if self.destroy: return 
       self.update_config()
+        
       time.sleep(self.website_info["update_second"])
+      if self.destroy:
+        return
       
       new_annotations = self.get_annotation()
       
@@ -134,7 +170,7 @@ class BasicTracker():
         continue
       
       if self.checking(new_annotations):
-        self.logger.info(f'============== Website 【{self.website_info["website_name"]}】 Update! ===============')
+        self.logger.info(f'============== Website 【{self.website_info["website_name"]}】 Update!=')
         self.logger.info('Link: '+self.website_info["target_URL"])
         self.logger.info('New Annotations: '+ str(self.annotations))
         self.logger.info('Emails: '+str(self.website_info["to_emails"]))
@@ -142,13 +178,14 @@ class BasicTracker():
         self.logger.info('Send Email ...')
         
         if not self.debug:
-          email_content='Website: {website_name}\n Link: {link}\n\n {message} \n\n====Original====\n: {original}\n=====Update=====\n{update}'
+          email_content='Website: {website_name}\n Link: {link}\n\n {message} \n\n====Original====\n {original}\n=====Update=====\n{update}'
           send_email(content_text = email_content.format(website_name=self.website_info["website_name"],
                                                          link=self.website_info["target_URL"],
                                                          message=self.website_info["email_messages"],
                                                          original=self.annotations,
                                                          update=new_annotations),
                      to_email =self.website_info["to_emails"])
+          print('')
           
         self.annotations = new_annotations
         
@@ -172,15 +209,16 @@ class DynamicTracker(BasicTracker):
     try:
       self.driver.get(self.website_info["target_URL"])
       self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-      time.sleep(5)
+      time.sleep(self.tracker_info['dynamic_delay'])
       self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-      time.sleep(5)
+      time.sleep(self.tracker_info['dynamic_delay'])
       page_content = self.driver.page_source
       self.driver.close()
       
     except Exception as e:
       self.driver.close()
       self.logger.error("Error message: "+ str(e))
+      print('')
       return None
 
     return page_content

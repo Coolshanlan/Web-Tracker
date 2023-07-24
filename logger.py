@@ -2,6 +2,9 @@ import os, logging
 
 def get_logger(name, filepath = None, overwrite_print=False):
     global print
+    if logging.getLogger(name).hasHandlers():
+        return logging.getLogger(name)
+    
     if filepath is None:
         filepath = './logfile'
         if not os.path.exists(filepath):
@@ -11,8 +14,8 @@ def get_logger(name, filepath = None, overwrite_print=False):
     file_handler = logging.FileHandler(filepath,mode='w')
 
 
-    console_format = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    file_format = logging.Formatter('%(asctime)s - %(levelname)s - %(pathname)s -> %(funcName)s, line %(lineno)d - %(message)s')
+    console_format = logging.Formatter('%(asctime)10s  %(levelname)s  %(name)s  %(message)s')
+    file_format = logging.Formatter('%(asctime)s  %(levelname)s  %(pathname)s -> %(funcName)s, line %(lineno)d  %(message)s'.expandtabs(30))
 
 
     console_handler.setFormatter(console_format)

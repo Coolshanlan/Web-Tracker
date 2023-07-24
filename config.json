@@ -1,40 +1,127 @@
 [
   {
+    "target_URL":"https://www.borderless-house-zh.com/jp/sharehouse/?&region=jp&open-after=2023-08-30&gender=2&nationality=2&room-type=1&sort-field=monthlyRent",
+    "website_name":"日本share house 網站",
+    "enable":true,
+    "email_messages":"你家厲害寶貝幫你發現日本share house 網站有新的空屋囉！",
+    "to_emails":["joey0201020123@gmail.com","penny881121@gmail.com"],
+    "update_second":300,
+    "extract_all":true,
+    "mode":"Dynamic",
+    "tracker":"NewTracker",
+    "find_element":
+    {
+      "tag":"div",
+      "class_name":"table-tr"
+    }
+  },
+  {
     "target_URL":"https://tokyosharehouse.com/jpn/house/room/2933/empty/",
-    "tag":"div",
-    "class_name":"content-room",
-    "website_name":"日本女性專屬外宿網站",
-    "email_messages":"空屋房間已更新！",
-    "to_emails":["joey0201020123@gmail.com","penny881121@gmail.com"]
+    "website_name":"日本全女生出屋網站",
+    "enable":true,
+    "email_messages":"你家厲害寶貝幫你發現日本share house 網站有新的空屋囉！",
+    "to_emails":["joey0201020123@gmail.com","penny881121@gmail.com"],
+    "update_second":300,
+    "extract_all":false,
+    "find_element":
+    {
+      "tag":"div",
+      "class_name":"content-room"
+    }
+  },
+  {
+    "target_URL":"https://www.skyscanner.com.tw/transport/flights/tpet/nrt/230830/240221/config/17075-2308300850--32331-0-14788-2308301315%7C14788-2402211300--32331-0-17075-2402211605?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=1",
+    "website_name":"飛機機票",
+    "enable":true,
+    "email_messages":"你家厲害寶貝幫你發現日本share house 網站有新的空屋囉！",
+    "to_emails":["joey0201020123@gmail.com","penny881121@gmail.com"],
+    "update_second":120,
+    "remove_word":["NT$"],
+    "extract_all":false,
+    "find_element":
+    {
+      "tag":"span",
+      "class_name":"BpkText_bpk-text__MWZkY BpkText_bpk-text--heading-4__MzBkN"
+    },
+    "tracker":{
+      "mode":"Dynamic",
+      "dynamic_delay":10,
+      "tracker_name":"NumberTracker",
+      "target_number":
+      {
+        "mode":"lower",
+        "number":14200,
+        "remind_diff":-100
+      }
+    }
   },
   {
     "target_URL":"https://www.agoda.com/zh-tw/the-lin-hotel/hotel/taichung-tw.html?finalPriceView=1&isShowMobileAppPrice=false&cid=1844104&numberOfBedrooms=&familyMode=false&adults=2&children=0&rooms=1&maxRooms=0&checkIn=2023-09-4&isCalendarCallout=false&childAges=&numberOfGuest=0&missingChildAges=false&travellerType=1&showReviewSubmissionEntry=false&currencyCode=TWD&isFreeOccSearch=false&isCityHaveAsq=false&los=1&searchrequestid=6971bf86-71d4-471e-bb9e-ec9573c178ca",
-    "tag":"span",
-    "class_name":"StickyNavPrice__priceDetail",
     "website_name":"Agoda 林酒店 9_4-5 兩人",
+    "enable":true,
     "email_messages":"價格已降低！",
     "to_emails":["joey0201020123@gmail.com"],
-    "update_second":300,
-    "mode":"Dynamic",
-    "tracker":"NumberTracker",
+    "update_second":600,
     "remove_word":[",","自 NT$ "],
-    "remind_diff":-100
+    "find_element":
+    {
+      "tag":"span",
+      "class_name":"StickyNavPrice__priceDetail"
+    },
+    "tracker":{
+      "mode":"Dynamic",
+      "tracker_name":"NumberTracker",
+      "remind_diff":-100
+    }
   },
   {
     "target_URL":"https://www.google.com/finance/quote/TWD-JPY?sa=X&ved=2ahUKEwiI__fnooOAAxV0hMYKHYPhBNQQmY0JegQIDRAc",
-    "tag":"div",
-    "class_name":"kf1m0",
     "website_name":"日幣匯率",
+    "enable":true,
     "email_messages":"匯率已降低！",
     "to_emails":["joey0201020123@gmail.com"],
-    "update_second":300,
-    "mode":"Basic",
-    "tracker":"NumberTracker",
-    "target_number":
+    "update_second":600,
+    "find_element":
     {
-      "mode":"bigger",
-      "number":4.6,
-      "remind_diff":0.01
+      "tag":"div",
+      "class_name":"kf1m0"
+    },
+    "tracker":{
+      "mode":"Basic",
+      "tracker_name":"NumberTracker",
+      "target_number":
+      {
+        "mode":"bigger",
+        "number":4.6,
+        "remind_diff":0.01
+      }
+    }
+  },
+  {
+    "target_URL":"https://tbrain.trendmicro.com.tw/Competitions/CompetitionList",
+    "website_name":"TBrain 競賽網站",
+    "enable":true,
+    "email_messages":"新比賽放報名！",
+    "to_emails":["joey0201020123@gmail.com"],
+    "update_second":600,
+    "find_element":
+    {
+      "tag":"div",
+      "id":"collapseUpcoming"
+    }
+  },
+  {
+    "target_URL":"https://www.aicup.tw/copy-of-ai-cup-2023-1",
+    "website_name":"AIdea 競賽網站",
+    "enable":true,
+    "email_messages":"秋季賽公布！",
+    "to_emails":["joey0201020123@gmail.com"],
+    "update_second":600,
+    "extract_all":true,
+    "find_element":
+    {
+      "tag":"h3",
+      "class_name":"font_3 wixui-rich-text__text"
     }
   }
 ]

@@ -1,0 +1,19 @@
+2023-07-22 02:08:50,923  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 62  【Initialize Config】
+2023-07-22 02:08:50,923  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 57  extract_all: False
+2023-07-22 02:08:50,923  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 57  encoding: False
+2023-07-22 02:08:50,923  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 57  update_second: 600
+2023-07-22 02:08:50,923  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 57  mode: Basic
+2023-07-22 02:08:50,923  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 57  tracker: BasicTracker
+2023-07-22 02:08:50,923  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 57  email_messages: 新比賽放報名！
+2023-07-22 02:08:50,923  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 57  target_URL: https://tbrain.trendmicro.com.tw/Competitions/CompetitionList
+2023-07-22 02:08:50,923  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 57  website_name: TBrain 競賽網站
+2023-07-22 02:08:50,923  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 57  enable: True
+2023-07-22 02:08:50,923  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 57  to_emails: ['joey0201020123@gmail.com']
+2023-07-22 02:08:50,923  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> log_config, line 57  find_element: {'tag': 'div', 'id': 'collapseUpcoming'}
+2023-07-22 02:08:50,923  DEBUG  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 64  Init annotations: 
+
+2023-07-22 02:08:50,923  INFO  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 66  【Initialize Website Tracker】
+2023-07-22 02:08:50,924  INFO  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 67  Website: TBrain 競賽網站
+2023-07-22 02:08:50,924  INFO  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 68  Link: https://tbrain.trendmicro.com.tw/Competitions/CompetitionList
+2023-07-22 02:08:50,924  INFO  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 69  Emails: ['joey0201020123@gmail.com']
+2023-07-22 02:08:50,924  INFO  /home/coolshan/Project/Tracker/tracker/basic_tracker.py -> init_tracker, line 71  Update Frequency: 600 second
