@@ -14,7 +14,6 @@
   "tracker":{
     "tracker_name": ["BasicTracker","DynamicTracker","NumberTracker","NewTracker"],
     "mode":["Basic","Dynamic"],
-    "remind_diff":0.1,
     "target_number":
     {
       "mode":["bigger","lower"],

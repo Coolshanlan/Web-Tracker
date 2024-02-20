@@ -30,24 +30,22 @@ def get_NumberTracker(basic_tracker):
                 self.logger.debug(f'Annotation update record:{new_annotations}')
             
             # check if number achieve the target number    
-            if "target_number" in self.tracker_info.keys():
-                target_info=self.tracker_info["target_number"]
-                
-                # keep tracking
-                if self.achieved and "remind_diff" in self.target_info.keys():
-                    return (new_annotations-self.annotations) >= int(self.target_info['remind_diff'])
-                # destroy runner
-                elif self.achieved:
-                    self.destroy=True
-                    return False
-                
-                self.achieved = new_annotations >= target_info['number'] if target_info['mode'] == "bigger" else new_annotations < target_info['number']
-                return self.achieved
+            target_info=self.tracker_info["target_number"]
             
-            # Only remind diff
+            # keep tracking
+            if 'number' in self.target_info.keys() and not self.achieved:
+                self.achieved = (new_annotations >= target_info['number']) if target_info['mode'] == "bigger" else (new_annotations < target_info['number'])
+                return self.achieved
 
-            return (new_annotations-self.annotations)*(1 if float(self.tracker_info['remind_diff'])>0 else -1) >= abs(float(self.tracker_info['remind_diff']))
-        
+            if "remind_diff" in self.target_info.keys():
+                if target_info['mode'] == 'bigger':
+                    return (new_annotations-self.annotations) >= int(self.target_info['remind_diff'])
+                else:
+                    return (new_annotations-self.annotations) <= int(self.target_info['remind_diff'])
+            # destroy runner
+            else: # no remind_diff and achieved
+                self.destroy=True
+                return False        
         
     return NumberTracker
 

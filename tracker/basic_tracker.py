@@ -23,17 +23,18 @@ def update_dict(d, u):
     return d
   
 class BasicTracker(threading.Thread):
-  default_config={
-    "extract_all":False,
-    "encoding":False,
-    "update_second":300,
-    "tracker":{
-      "mode":"Basic",
-      "tracker_name":"BasicTracker",
-      "dynamic_delay":5
-      }
-    }
-  
+
+  def get_default_config(self):
+    return {
+            "extract_all":False,
+            "encoding":False,
+            "update_second":300,
+            "tracker":{
+              "mode":"Basic",
+              "tracker_name":"BasicTracker"
+              }
+          }
+                        
   def __init__(self, website_info, config_path, debug=False):
     super().__init__()
     self.website_info = self.load_config(website_info)
@@ -61,7 +62,7 @@ class BasicTracker(threading.Thread):
     self.logger.info(f'【Closing 【{self.name}】 tracker】')
     
   def load_config(self, website_info):
-    _website_info = copy.deepcopy(dict(BasicTracker.default_config))
+    _website_info = copy.deepcopy(dict(self.get_default_config()))
     update_dict(_website_info,website_info)
     return _website_info
 
@@ -73,6 +74,8 @@ class BasicTracker(threading.Thread):
       if track_website_info['website_name'] == self.website_info['website_name']:
         new_website_info = self.load_config(track_website_info)
         if self.website_info!=new_website_info:
+          print(new_website_info)
+          print(self.website_info)
           self.website_info = dict(new_website_info)
           self.tracker_info = self.website_info['tracker']
           self.logger.info('【Config Updated】')
@@ -229,6 +232,17 @@ class BasicTracker(threading.Thread):
         
         
 class DynamicTracker(BasicTracker):
+  def get_default_config(self):
+    return {
+            "extract_all":False,
+            "encoding":False,
+            "update_second":300,
+            "tracker":{
+              "dynamic_delay": 6,
+              "scorll_times": 3,
+              }
+           }
+
   def __init__(self, **kwargs):
         super().__init__(**kwargs)
         
@@ -251,15 +265,12 @@ class DynamicTracker(BasicTracker):
     self.init_driver()
     try:
       self.driver.get(self.website_info["target_URL"])
-      self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-      time.sleep(self.tracker_info['dynamic_delay'])
-      # self.driver.implicitly_wait(self.tracker_info['dynamic_delay'])
-      self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-      time.sleep(self.tracker_info['dynamic_delay'])
+      scroll_times = self.tracker_info['scorll_times']
+      for i in range(scroll_times):
+        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        time.sleep(self.tracker_info['dynamic_delay'])
+        # self.driver.implicitly_wait(self.tracker_info['dynamic_delay'])
 
-      self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-      time.sleep(self.tracker_info['dynamic_delay'])
-      # self.driver.implicitly_wait(self.tracker_info['dynamic_delay'])
       page_content = self.driver.page_source
       self.driver.close()
       
@@ -273,6 +284,8 @@ class DynamicTracker(BasicTracker):
   
   
 def get_BasicTracker(basic_tracker):
+  if basic_tracker is DynamicTracker:
+    return get_DynamicTracker(BasicTracker)
   return BasicTracker
 
 def get_DynamicTracker(basic_tracker):

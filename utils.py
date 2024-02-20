@@ -8,7 +8,6 @@ default_config = {
     "tracker": {
         "mode": "Basic",
         "tracker_name": "BasicTracker",
-        "dynamic_delay": 5,
     }
 }
 

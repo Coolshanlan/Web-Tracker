@@ -34,6 +34,7 @@ python website_tracker.py -d -t <config index>
         "tracker_name": ["BasicTracker","DynamicTracker","NumberTracker","NewTracker"],
         "mode":["Basic","Dynamic"],
         "dynamic_delay": 5, (dynamic only)
+        "scorll_times": 3, (dynamic only)
     }
 }
 ```
@@ -46,7 +47,8 @@ python website_tracker.py -d -t <config index>
 - tracker: 跟 tracker 相關的參數
   - tracker_name: ["BasicTracker","NumberTracker","ListNewTracker"] 擇一
   - mode: 動態會開啟 web driver
-  - **dynamic_delay**: dynamic mode only, scroll 總共三次，中間等待內容載入的時間
+  - **dynamic_delay**: dynamic mode only, 每次 scroll 中間等待內容載入的時間
+  - **scorll_times**: dynamic mode only, scroll 次數
 
 ## Tracker
 ### BasicTracker
@@ -63,8 +65,8 @@ python website_tracker.py -d -t <config index>
     "target_number":
       {
         "mode":"bigger",
-        "number":4.6,
-        "remind_diff":0.01
+        "number":4.6, (擇一 or both)
+        "remind_diff":0.01 (擇一 or both)
       }
 }
 ```

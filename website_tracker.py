@@ -23,6 +23,7 @@ def argparser():
     return args
 
 def create_tracker_runner(website_info):
+    website_info = load_info(website_info)
     tracker_info = website_info['tracker']
     tracker = get_Tracker(tracker_info["tracker_name"], tracker_info["mode"])
     return tracker(website_info=website_info,
@@ -41,7 +42,6 @@ if DEBUG or TEST_INDEX is not None:
 
     if TEST_INDEX is not None:
         website_info = track_website_infos[TEST_INDEX]
-        website_info = load_info(website_info)
         runner = create_tracker_runner(website_info)
         runner.start()
         time.sleep(60)
