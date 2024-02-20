@@ -1,14 +1,16 @@
 [
   {
     "target_URL":"https://www.borderless-house-zh.com/jp/sharehouse/?&region=jp&open-after=2023-08-30&gender=2&nationality=2&room-type=1&sort-field=monthlyRent",
-    "website_name":"日本share house 網站",
+    "website_name":"日本 share house 網站",
     "enable":true,
     "email_messages":"你家厲害寶貝幫你發現日本share house 網站有新的空屋囉！",
     "to_emails":["joey0201020123@gmail.com","penny881121@gmail.com"],
     "update_second":300,
     "extract_all":true,
-    "mode":"Dynamic",
-    "tracker":"NewTracker",
+    "tracker":{
+      "mode":"Dynamic",
+      "tracker_name":"ListNewTracker"
+    },
     "find_element":
     {
       "tag":"div",
@@ -22,37 +24,11 @@
     "email_messages":"你家厲害寶貝幫你發現日本share house 網站有新的空屋囉！",
     "to_emails":["joey0201020123@gmail.com","penny881121@gmail.com"],
     "update_second":300,
-    "extract_all":false,
+    "extract_all":true,
     "find_element":
     {
       "tag":"div",
-      "class_name":"content-room"
-    }
-  },
-  {
-    "target_URL":"https://www.skyscanner.com.tw/transport/flights/tpet/nrt/230830/240221/config/17075-2308300850--32331-0-14788-2308301315%7C14788-2402211300--32331-0-17075-2402211605?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=1",
-    "website_name":"飛機機票",
-    "enable":true,
-    "email_messages":"你家厲害寶貝幫你發現日本share house 網站有新的空屋囉！",
-    "to_emails":["joey0201020123@gmail.com","penny881121@gmail.com"],
-    "update_second":120,
-    "remove_word":["NT$"],
-    "extract_all":false,
-    "find_element":
-    {
-      "tag":"span",
-      "class_name":"BpkText_bpk-text__MWZkY BpkText_bpk-text--heading-4__MzBkN"
-    },
-    "tracker":{
-      "mode":"Dynamic",
-      "dynamic_delay":10,
-      "tracker_name":"NumberTracker",
-      "target_number":
-      {
-        "mode":"lower",
-        "number":14200,
-        "remind_diff":-100
-      }
+      "class_name":"room-num"
     }
   },
   {
@@ -62,7 +38,7 @@
     "email_messages":"價格已降低！",
     "to_emails":["joey0201020123@gmail.com"],
     "update_second":600,
-    "remove_word":[",","自 NT$ "],
+    "filtering":[",","自 NT$ "],
     "find_element":
     {
       "tag":"span",
@@ -71,7 +47,8 @@
     "tracker":{
       "mode":"Dynamic",
       "tracker_name":"NumberTracker",
-      "remind_diff":-100
+      "remind_diff":-100,
+      "dynamic_delay":10
     }
   },
   {
@@ -123,5 +100,24 @@
       "tag":"h3",
       "class_name":"font_3 wixui-rich-text__text"
     }
+  },
+  {
+    "target_URL":"https://shopee.tw/product/46413286/19379438985",
+    "website_name":"咻咻熊",
+    "enable":false,
+    "email_messages":"XXL咻咻熊有新貨！",
+    "to_emails":["joey0201020123@gmail.com"],
+    "update_second":300,
+    "extract_all":false,
+    "tracker":{
+      "mode":"Basic",
+      "tracker_name":"BasicTracker"
+    },
+    "find_element":
+    {
+      "tag":"div",
+      "class_name":"flex items-center _6lioXX"
+    }
   }
+  
 ]

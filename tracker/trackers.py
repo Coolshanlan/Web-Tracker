@@ -8,7 +8,7 @@ import time
 import requests
 import logging
 from .basic_tracker import DynamicTracker, BasicTracker
-
+from send_email import send_email
 
 def get_NumberTracker(basic_tracker):
     class NumberTracker(basic_tracker):
@@ -17,13 +17,7 @@ def get_NumberTracker(basic_tracker):
             self.achieved =False
             self.last_annotation=None
             
-        def post_process(self,annotations):
-            if 'remove_word' in self.website_info.keys():
-                if isinstance(self.website_info['remove_word'],list):
-                    for word in self.website_info['remove_word']:
-                        annotations = annotations.replace(word,'')
-                else:
-                    annotations = annotations.replace(word,'')
+        def final_process(self,annotations):
             return float(annotations)
             
         def checking(self,new_annotations):
@@ -58,8 +52,8 @@ def get_NumberTracker(basic_tracker):
     return NumberTracker
 
 
-def get_NewTracker(basic_tracker):
-    class NewTracker(basic_tracker):
+def get_ListNewTracker(basic_tracker):
+    class ListNewTracker(basic_tracker):
         def __init__(self, **kwargs):
             super().__init__(**kwargs)
             self.achieved =False
@@ -70,13 +64,30 @@ def get_NewTracker(basic_tracker):
             if self.last_annotation is None:
                 self.last_annotation = new_annotations
             
-            # record history
-            if self.last_annotation != new_annotations:
-                self.last_annotation = new_annotations
-                self.logger.debug(f'Annotation update record:\n{new_annotations}')
             if len(set(new_annotations.split('\n'))-set(self.annotations.split('\n') ))>0:
                 return True
-        
+            elif self.last_annotation != new_annotations:
+                self.last_annotation = new_annotations
+                self.logger.debug(f'Annotation update record:\n{new_annotations}')
             return False
         
-    return NewTracker
+        def send_email(self,new_annotations):
+            new_annotations = '\n'.join(list(set(new_annotations.split('\n'))-set(self.annotations.split('\n') )))
+            self.logger.info(f'============== Website 【{self.website_info["website_name"]}】 Update! ==============')
+            self.logger.info('Link: '+self.website_info["target_URL"])
+            self.logger.info('New Annotations:\n'+ str(new_annotations))
+            self.logger.info('Emails: '+str(self.website_info["to_emails"]))
+            self.logger.info('Remind Message: '+self.website_info["email_messages"])
+            self.logger.info('Send Email ...')
+            
+            if not self.debug:
+                email_content='Website: {website_name}\n Link: {link}\n\n {message} \n\n====Original====\n {original}\n=====Update=====\n{update}'
+                send_email(content_text = email_content.format(website_name=self.website_info["website_name"],
+                                                                link=self.website_info["target_URL"],
+                                                                message=self.website_info["email_messages"],
+                                                                original=self.annotations,
+                                                                update=new_annotations),
+                            to_email =self.website_info["to_emails"])
+                print('')
+
+    return ListNewTracker

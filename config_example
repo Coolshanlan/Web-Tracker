@@ -11,13 +11,16 @@
     "class_name":"kf1m0",
     "id":"id"
   },
-  "mode":["Basic","Dynamic"],
-  "tracker":["BasicTracker","DynamicTracker","NumberTracker"],
-  "remind_diff":0.1,
-  "target_number":
-  {
-    "mode":["bigger","lower"],
-    "number":4.6,
-    "remind_diff":0.01
+  "tracker":{
+    "tracker_name": ["BasicTracker","DynamicTracker","NumberTracker","NewTracker"],
+    "mode":["Basic","Dynamic"],
+    "remind_diff":0.1,
+    "target_number":
+    {
+      "mode":["bigger","lower"],
+      "number":4.6,
+      "remind_diff":0.01
+    }
   }
+  
 }

@@ -11,7 +11,17 @@ from bs4 import BeautifulSoup
 import json
 import threading
 import sys
-
+import pyuseragents
+import collections 
+import copy
+def update_dict(d, u):
+    for k, v in u.items():
+        if isinstance(v, collections.abc.Mapping):
+            d[k] = update_dict(d.get(k, {}), v)
+        else:
+            d[k] = v
+    return d
+  
 class BasicTracker(threading.Thread):
   default_config={
     "extract_all":False,
@@ -34,13 +44,25 @@ class BasicTracker(threading.Thread):
     self.destroy = False
     self.name = self.website_info['website_name']
     
+  def get_header(self):
+    HEADERS = {
+            "User-Agent": pyuseragents.random(),
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            # "Accept-Language": "en-US,en-GB,zh-cn; q=0.5",
+            "referer": "https://shopee.tw/",
+            "Accept-Encoding": "br, gzip, deflate",
+            "Content-Type": "application/x-www-form-urlencoded; application/json; charset=UTF-8",
+            "Connection": "keep-alive"
+        }
+    return HEADERS
+    
   def close(self): 
     self.destroy=True
     self.logger.info(f'【Closing 【{self.name}】 tracker】')
     
   def load_config(self, website_info):
-    _website_info = dict(BasicTracker.default_config)
-    _website_info.update(website_info)
+    _website_info = copy.deepcopy(dict(BasicTracker.default_config))
+    update_dict(_website_info,website_info)
     return _website_info
 
   def update_config(self):
@@ -52,6 +74,7 @@ class BasicTracker(threading.Thread):
         new_website_info = self.load_config(track_website_info)
         if self.website_info!=new_website_info:
           self.website_info = dict(new_website_info)
+          self.tracker_info = self.website_info['tracker']
           self.logger.info('【Config Updated】')
           self.log_config()
           print('')
@@ -62,7 +85,12 @@ class BasicTracker(threading.Thread):
     
   def init_tracker(self):
     self.annotations = self.get_annotation()
-    
+    while self.annotations is None:
+      self.logger.info(f'Initialize {self.name} Tracker Error')
+      self.logger.info(f'Re-initialize again after {self.website_info["update_second"]} second.....')
+      self.annotations = self.get_annotation()
+      time.sleep(self.website_info["update_second"])
+      
     self.logger.debug('【Initialize Config】')
     self.log_config()
     self.logger.debug('Init annotations:\n'+ str(self.annotations))   
@@ -71,13 +99,13 @@ class BasicTracker(threading.Thread):
     self.logger.info('Website: '+self.website_info["website_name"])
     self.logger.info('Link: '+self.website_info["target_URL"])
     self.logger.info('Emails: '+str(self.website_info["to_emails"]))
-    # self.logger.info('Remind Message: '+self.website_info["email_messages"])
     self.logger.info('Update Frequency: '+str(self.website_info["update_second"])+ ' second')
+
     print('')
     
   def get_page_content(self):
     try:
-      response = requests.get(self.website_info["target_URL"])
+      response = requests.get(self.website_info["target_URL"],headers = self.get_header())
       if self.website_info["encoding"]:
           response.encoding = self.website_info["encoding"]
 
@@ -124,12 +152,15 @@ class BasicTracker(threading.Thread):
       return annotations
     
   def post_process(self,annotations):
-    if 'remove_word' in self.website_info.keys():
-      if isinstance(self.website_info['remove_word'],list):
-        for word in self.website_info['remove_word']:
+    if 'filtering' in self.website_info.keys():
+      if isinstance(self.website_info['filtering'],list):
+        for word in self.website_info['filtering']:
           annotations = annotations.replace(word,'')
       else:
         annotations = annotations.replace(word,'')
+    return annotations.strip()
+
+  def final_process(self,annotations):
     return annotations
   
   def get_annotation(self):
@@ -137,6 +168,9 @@ class BasicTracker(threading.Thread):
       if page_content == None:
         return None
       
+      with open(f'extract_html/{self.name}.html','w') as f:
+        f.write(page_content)
+        
       new_annotations = self.extract_annotation(page_content)
       
       if new_annotations == None:
@@ -146,6 +180,8 @@ class BasicTracker(threading.Thread):
         print(f'extract annotation:\n{new_annotations}')
         
       new_annotations = self.post_process(new_annotations)
+      new_annotations = self.final_process(new_annotations)
+      
       if self.debug:
         print(f'post process annotation:\n{new_annotations}')
         
@@ -153,6 +189,24 @@ class BasicTracker(threading.Thread):
     
   def checking(self,new_annotations):
     return self.annotations!=new_annotations
+  
+  def send_email(self,new_annotations):
+    self.logger.info(f'============== Website 【{self.website_info["website_name"]}】 Update! ==============')
+    self.logger.info('Link: '+self.website_info["target_URL"])
+    self.logger.info('New Annotations:\n'+ str(self.annotations))
+    self.logger.info('Emails: '+str(self.website_info["to_emails"]))
+    self.logger.info('Remind Message: '+self.website_info["email_messages"])
+    self.logger.info('Send Email ...')
+    
+    if not self.debug:
+      email_content='Website: {website_name}\n Link: {link}\n\n {message} \n\n====Original====\n {original}\n=====Update=====\n{update}'
+      send_email(content_text = email_content.format(website_name=self.website_info["website_name"],
+                                                      link=self.website_info["target_URL"],
+                                                      message=self.website_info["email_messages"],
+                                                      original=self.annotations,
+                                                      update=new_annotations),
+                  to_email =self.website_info["to_emails"])
+      print('')
 
   def run(self):
     self.init_tracker()
@@ -170,23 +224,7 @@ class BasicTracker(threading.Thread):
         continue
       
       if self.checking(new_annotations):
-        self.logger.info(f'============== Website 【{self.website_info["website_name"]}】 Update!=')
-        self.logger.info('Link: '+self.website_info["target_URL"])
-        self.logger.info('New Annotations: '+ str(self.annotations))
-        self.logger.info('Emails: '+str(self.website_info["to_emails"]))
-        self.logger.info('Remind Message: '+self.website_info["email_messages"])
-        self.logger.info('Send Email ...')
-        
-        if not self.debug:
-          email_content='Website: {website_name}\n Link: {link}\n\n {message} \n\n====Original====\n {original}\n=====Update=====\n{update}'
-          send_email(content_text = email_content.format(website_name=self.website_info["website_name"],
-                                                         link=self.website_info["target_URL"],
-                                                         message=self.website_info["email_messages"],
-                                                         original=self.annotations,
-                                                         update=new_annotations),
-                     to_email =self.website_info["to_emails"])
-          print('')
-          
+        self.send_email(new_annotations) 
         self.annotations = new_annotations
         
         
@@ -199,9 +237,14 @@ class DynamicTracker(BasicTracker):
       options.add_argument('--headless')
       options.add_argument('--no-sandbox')
       options.add_argument('--disable-dev-shm-usage')
-      options.add_argument("--disable-notifications")
-      driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-      self.driver = driver
+      options.add_argument('--disable-notifications')
+      options.add_argument('--user-agent=%s' % pyuseragents.random())
+      options.add_argument('--accept=%s' % "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
+      options.add_argument('--accept-encoding=%s' % "br, gzip, deflate")
+      options.add_argument('--content-type=%s' % "application/x-www-form-urlencoded; application/json; charset=UTF-8")
+      options.add_argument('--Connection=%s' % "keep-alive")
+
+      self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
       
       
   def get_page_content(self):
@@ -210,8 +253,13 @@ class DynamicTracker(BasicTracker):
       self.driver.get(self.website_info["target_URL"])
       self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
       time.sleep(self.tracker_info['dynamic_delay'])
+      # self.driver.implicitly_wait(self.tracker_info['dynamic_delay'])
       self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
       time.sleep(self.tracker_info['dynamic_delay'])
+
+      self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+      time.sleep(self.tracker_info['dynamic_delay'])
+      # self.driver.implicitly_wait(self.tracker_info['dynamic_delay'])
       page_content = self.driver.page_source
       self.driver.close()
       
