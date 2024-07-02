@@ -51,6 +51,11 @@ python website_tracker.py -d -t <config index>
   - **scorll_times**: dynamic mode only, scroll 次數
 
 ## Tracker
+- BasicTracker
+- DynamicTracker
+- NumberTracker
+- ListNewTracker
+  
 ### BasicTracker
 抓出 element 中的文字
 
