@@ -1,0 +1,76 @@
+[
+  {
+    "target_URL":"https://www.agoda.com/zh-tw/the-lin-hotel/hotel/taichung-tw.html?finalPriceView=1&isShowMobileAppPrice=false&cid=1844104&numberOfBedrooms=&familyMode=false&adults=2&children=0&rooms=1&maxRooms=0&checkIn=2023-09-4&isCalendarCallout=false&childAges=&numberOfGuest=0&missingChildAges=false&travellerType=1&showReviewSubmissionEntry=false&currencyCode=TWD&isFreeOccSearch=false&isCityHaveAsq=false&los=1&searchrequestid=6971bf86-71d4-471e-bb9e-ec9573c178ca",
+    "website_name":"Agoda 林酒店 9_4-5 兩人",
+    "enable":false,
+    "email_messages":"價格已降低！",
+    "to_emails":["joey0201020123@gmail.com"],
+    "update_second":600,
+    "filtering":[",","自 NT$ "],
+    "find_element":
+    {
+      "tag":"span",
+      "class_name":"StickyNavPrice__priceDetail"
+    },
+    "tracker":{
+      "mode":"Dynamic",
+      "tracker_name":"NumberTracker",
+      "remind_diff":-100,
+      "dynamic_delay":10
+    }
+  },
+  {
+    "target_URL":"https://tbrain.trendmicro.com.tw/Competitions/CompetitionList",
+    "website_name":"TBrain 競賽網站",
+    "enable":false,
+    "email_messages":"新比賽放報名！",
+    "to_emails":["joey0201020123@gmail.com"],
+    "update_second":3600,
+    "find_element":
+    {
+      "tag":"div",
+      "id":"collapseUpcoming"
+    }
+  },
+  {
+    "target_URL":"https://www.bettermilk.com.tw/search?q=%E8%9B%8B%E6%8D%B2",
+    "website_name":"鮮乳訪官網蛋捲搜尋",
+    "enable":true,
+    "email_messages":"鮮乳訪蛋捲搜尋結果更新！",
+    "to_emails":["joey0201020123@gmail.com"],
+    "update_second":1800,
+    "find_element":
+    {
+      "tag":"h3",
+      "class_name":"search-heading"
+    },
+    "tracker":{
+      "mode":"Dynamic"
+    }
+  },
+  {
+    "target_URL":"https://www.google.com/finance/quote/2330:TPE",
+    "website_name":"台積電股價",
+    "enable":false,
+    "extrac_all":false,
+    "email_messages":"台積電股價該注意了！",
+    "to_emails":["joey0201020123@gmail.com"],
+    "update_second":600,
+    "filtering":["$"],
+    "find_element":
+    {
+      "tag":"div",
+      "class_name":"YMlKec fxKbKc"
+    },
+    "tracker":{
+      "mode":"Dynamic",
+      "tracker_name":"NumberTracker",
+      "target_number":
+      {
+        "mode":"bigger",
+        "number":705,
+        "remind_diff":1
+      }
+    }
+  }
+]

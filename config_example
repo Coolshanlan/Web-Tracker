@@ -1,0 +1,25 @@
+{
+  "target_URL":"https://www.google.com/finance/quote/TWD-JPY?sa=X&ved=2ahUKEwiI__fnooOAAxV0hMYKHYPhBNQQmY0JegQIDRAc",
+  "website_name":"日幣匯率",
+  "email_messages":"匯率已降低！",
+  "to_emails":["joey0201020123@gmail.com"],
+  "update_second":300,
+  "extract_all":false,
+  "find_element":
+  {
+    "tag":"div",
+    "class_name":"kf1m0",
+    "id":"id"
+  },
+  "tracker":{
+    "tracker_name": ["BasicTracker","DynamicTracker","NumberTracker","NewTracker"],
+    "mode":["Basic","Dynamic"],
+    "target_number":
+    {
+      "mode":["bigger","lower"],
+      "number":4.6,
+      "remind_diff":0.01
+    }
+  }
+  
+}
